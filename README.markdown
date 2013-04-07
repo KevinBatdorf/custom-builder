@@ -1,4 +1,4 @@
-[Liquid Slider](http://kevinbatdorf.com/custom-builder)
+[Custom Builder](http://kevinbatdorf.com/custom-builder)
 ============
 A custom module builder for any programming language, using GitHub
 
