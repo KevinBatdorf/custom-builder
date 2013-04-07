@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--
+  Custom Builder
+  Kevin Batdorf
+
+  http://.kevinbatdorf.com
+
+  MIT/GPL license
+-->
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" />
+    <meta name="description" content="Content Builder: Custom builds via Github" />
+
+    <!-- This is just styling for the demo to make it a little less crowded at the top -->
+    <style>h1{margin:100px 0;}body{padding:20px;}</style>
+    <style>
+    /* Some random styles for the progress bar */
+      .progress-bar-outer {
+          width: 300px;
+          background: #ccc;
+          position: relative;
+      }
+
+      .progress-bar {
+          background: #3B5998;
+          padding: 5px 0px;
+          color: #FFF;
+          text-align: center;
+          height: 20px;
+          transition:width 0.2s ease;
+      }
+    </style>
+
+    <!-- This script relies on jQuery and easing effects-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="./js/jquery.custom-builder.min.js"></script>
+
+    <title>Custom Builder: Custom builds via Github</title>
+
+    <script>
+    $(function(){
+
+      /* Here is the custom builder using default settings */
+      $('.compile').customBuilder({
+        userName:             "username",
+        repoName:             "repository",
+        sha:                  false,
+        headerFile:           null,
+        footerFile:           null,
+        buttonProcessingText: "Building...",
+        buttonFinishedText:   "Download Now",
+        actionFile:           "build.php"
+      });
+
+      /* Find out what these settings mean in the readme file */
+
+    });
+    </script> 
+  </head>
+  <body class='no-js' style="margin:0">
+    <h1>Custom Builder</h1>
+    <h2>Note: This is not a working demo</h2>
+    <div class="cb-options">
+      <!-- The Checkboxes -->
+        <input type='checkbox' value='js/jquery.custom-slider-part1.min.js' id='part1'>
+          <label for='jquery.custom-slider-part1.min.js'>custom-slider-part1</label>
+        <input type='checkbox' value='js/jquery.custom-slider-part2.min.js' id='part2'>
+          <label for='jquery.custom-slider-part2.min.js'>custom-slider-part2</label>
+        <input type='checkbox' value='js/jquery.custom-slider-part3.min.js' id='part3'>
+          <label for='jquery.custom-slider-part3.min.js'>custom-slider-part3</label>
+        <input type='checkbox' value='js/jquery.custom-slider-part4.min.js' id='part4'>
+          <label for='jquery.custom-slider-part4.min.js'>custom-slider-part4</label>
+        <!-- The Button -->
+        <button class="compile">Compile</button>
+        <div class="progress-bar-outer">
+            <div class="progress-bar" style="width: 0%"></div>
+        </div>
+      </div>
+  </body>
+</html>
