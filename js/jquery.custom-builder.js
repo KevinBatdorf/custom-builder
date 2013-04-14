@@ -198,14 +198,12 @@ if (typeof Object.create !== 'function') {
           checked = $('.options input:checked');
 
       if (self.options.adjustSettings) {
-        console.log(output);
         checked.each(function(n) {
           var data = $(this).data('cbuilder');
           $.each(data, function(key, value) {
             output = output.replace(key, value);
           });
         });
-        console.log(output);
         setOutput(output);
       } else {
         setOutput(output);
