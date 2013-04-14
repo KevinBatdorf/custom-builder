@@ -52,7 +52,8 @@
         footerFile:           null,
         buttonProcessingText: "Building...",
         buttonFinishedText:   "Download Now",
-        actionFile:           "build.php"
+        actionFile:           "build.php",
+        adjustSettings:       true
       });
 
       /* Find out what these settings mean in the readme file */
@@ -65,13 +66,14 @@
     <h2>Note: This is not a working demo</h2>
     <div class="cb-options">
       <!-- The Checkboxes -->
-        <input type='checkbox' value='js/jquery.custom-slider-part1.min.js' id='part1'>
+        <!-- Note how to adjust settings in case a file is included -->
+        <input type='checkbox' data-cbuilder='{"setting:false":"setting:true", "setting2:false":"setting2:true"}'  value='js/jquery.custom-slider-part1.min.js' id='part1'>
           <label for='jquery.custom-slider-part1.min.js'>custom-slider-part1</label>
-        <input type='checkbox' value='js/jquery.custom-slider-part2.min.js' id='part2'>
+        <input type='checkbox' data-cbuilder='{"setting:false":"setting:true"}' value='js/jquery.custom-slider-part2.min.js' id='part2'>
           <label for='jquery.custom-slider-part2.min.js'>custom-slider-part2</label>
-        <input type='checkbox' value='js/jquery.custom-slider-part3.min.js' id='part3'>
+        <input type='checkbox' data-cbuilder='{"setting:false":"setting:true"}' value='js/jquery.custom-slider-part3.min.js' id='part3'>
           <label for='jquery.custom-slider-part3.min.js'>custom-slider-part3</label>
-        <input type='checkbox' value='js/jquery.custom-slider-part4.min.js' id='part4'>
+        <input type='checkbox' data-cbuilder='{"setting:false":"setting:true"}' value='js/jquery.custom-slider-part4.min.js' id='part4'>
           <label for='jquery.custom-slider-part4.min.js'>custom-slider-part4</label>
         <!-- The Button -->
         <button class="compile">Compile</button>

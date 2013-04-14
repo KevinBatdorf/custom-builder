@@ -8,7 +8,7 @@ A custom module builder for any programming language, using GitHub
 What Does It Do?
 ----------------
 
-Basically it concates files together from Github, allowing users to select which modules they want to include
+Basically it concates files together from Github, allowing users to select which modules they want to include. [Check out an example](http://liquidslider.com/custom-build/)
 
 
 Why Would I Use It?
@@ -36,7 +36,7 @@ Next, you change the files for each module name in your markup:
 ```html
 <div class="cb-options">
   <!-- The Checkboxes -->
-    <input type='checkbox' value='path/to/module1' id='module1'>
+    <input type='checkbox' data-cbuilder='{"setting:false":"setting:true"}' value='path/to/module1' id='module1'>
       <label for='module1'>module1</label>
     <!-- The Button -->
     <button class="compile">Compile</button>
@@ -45,6 +45,7 @@ Next, you change the files for each module name in your markup:
     </div>
   </div>
 ```
+I recommend you set the default settings to false in your code, then use the data-cbuilder to set it true on condition that it's included. You can change these as needed.
 
 Notice that you may include a progress bar as well.
 
@@ -61,7 +62,8 @@ Then, edit the following JavaScript settings:
     progressBarText:        null,             // Optionally add text on complete
     actionFile:             "build.php",
     authenticate:           false,            // Enable to increase API rate limit
-    loginInfoFile:          "build.php"
+    loginInfoFile:          "build.php",
+    adjustSettings:         true              // In case you need to adjust settings
 ```
 
 Some important things to pay attention to. You have to include a header and footer file, two files which would be included in each file regardless. 

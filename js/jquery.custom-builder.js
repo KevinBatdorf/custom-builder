@@ -78,7 +78,7 @@ if (typeof Object.create !== 'function') {
       // Let's do something when the download button is clicked
       $('.compile').on('click', function() {
         // Cache the relevant items
-        self.checkedCached = $('.cb-options input:checked').toArray();
+        self.checkedCached = $('.options input:checked').toArray();
         self.numOfCheckboxes = self.checkedCached.length;
         // Abort if nothing was checked
         if (self.numOfCheckboxes === 0) { return false; }
@@ -186,15 +186,36 @@ if (typeof Object.create !== 'function') {
       if (self.options.footerFile) {
         self.fetchFile(self.options.userName, self.options.repoName, self.options.footerFile, function(content) {
           (self.modules).push(content);
-          setOutput();
+          self.adjustSettings();
         });
-      } else { setOutput(); }
+      } else { self.adjustSettings(); }
 
-      function setOutput() {
+    },
+
+    adjustSettings: function() {
+      var self    = this,
+          output  = (self.modules).join(""),
+          checked = $('.options input:checked');
+
+      if (self.options.adjustSettings) {
+        console.log(output);
+        checked.each(function(n) {
+          var data = $(this).data('cbuilder');
+          $.each(data, function(key, value) {
+            output = output.replace(key, value);
+          });
+        });
+        console.log(output);
+        setOutput(output);
+      } else {
+        setOutput(output);
+      }
+
+      function setOutput(output) {
         // Make final updates on progress bar
         self.finalizeProgress();
         // Set the value to the output
-        $('.cb-output').val( (self.modules).join("") );
+        $('.cb-output').val( output );
       }
     },
 
@@ -240,7 +261,8 @@ if (typeof Object.create !== 'function') {
     progressBarText:      null,
     actionFile:           "build.php",
     authenticate:         false,
-    loginInfoFile:        "build.php"
+    loginInfoFile:        "build.php",
+    adjustSettings:       true
   };
 
 })(jQuery, window, document);
